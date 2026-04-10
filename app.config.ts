@@ -2,29 +2,16 @@
 import "./scripts/load-env.js";
 import type { ExpoConfig } from "expo/config";
 
-// Bundle ID format: space.manus.<project_name_dots>.<timestamp>
-const rawBundleId = "space.manus.slipin.t20260410141916";
-const bundleId =
-  rawBundleId
-    .replace(/[-_]/g, ".")
-    .replace(/[^a-zA-Z0-9.]/g, "")
-    .replace(/\.+/g, ".")
-    .replace(/^\.+|\.+$/g, "")
-    .toLowerCase()
-    .split(".")
-    .map((segment) => {
-      return /^[a-zA-Z]/.test(segment) ? segment : "x" + segment;
-    })
-    .join(".") || "space.manus.app";
-
-const timestamp = bundleId.split(".").pop()?.replace(/^t/, "") ?? "";
-const schemeFromBundleId = `manus${timestamp}`;
+// Bundle ID format: com.ahmadkamal.slipin
+// Maine isay professional standard (Reverse Domain Name) par kar diya hai
+const bundleId = "com.ahmadkamal.slipin";
+const scheme = "slipin-app";
 
 const env = {
   appName: "SlipIn",
   appSlug: "slipin",
   logoUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663295506312/VrzLjexObOjvOoBp.png",
-  scheme: schemeFromBundleId,
+  scheme: scheme,
   iosBundleId: bundleId,
   androidPackage: bundleId,
 };
@@ -33,11 +20,17 @@ const config: ExpoConfig = {
   name: env.appName,
   slug: env.appSlug,
   version: "1.0.0",
+  owner: "ahmad-kamal",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: env.scheme,
   userInterfaceStyle: "dark",
   newArchEnabled: true,
+  extra: {
+    eas: {
+      projectId: "f6aeaf30-396b-4714-ac88-14c6ca193313"
+    }
+  },
   ios: {
     supportsTablet: true,
     bundleIdentifier: env.iosBundleId,
