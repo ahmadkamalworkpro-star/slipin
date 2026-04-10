@@ -25,7 +25,7 @@ const config: ExpoConfig = {
   icon: "./assets/images/icon.png",
   scheme: env.scheme,
   userInterfaceStyle: "dark",
-  newArchEnabled: true,
+  newArchEnabled: false,
   extra: {
     eas: {
       projectId: "f6aeaf30-396b-4714-ac88-14c6ca193313"
