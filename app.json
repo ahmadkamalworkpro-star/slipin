@@ -6,37 +6,23 @@
     "owner": "ahmad-kamal",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "manus20260410141916",
+    "scheme": "slipin",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "space.manus.slipin.t20260410141916",
-      "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "SlipIn uses your location to show you nearby people.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "SlipIn uses your location to show you nearby people.",
-        "NSPhotoLibraryUsageDescription": "SlipIn needs access to your photos to set a profile picture.",
-        "NSCameraUsageDescription": "SlipIn needs camera access to take a profile photo."
+    "extra": {
+      "eas": {
+        "projectId": "4d7c1c76-329c-47a0-9a47-09489321fe0f"
       }
     },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ahmadkamal.slipin"
+    },
     "android": {
-      "package": "space.manus.slipin.t20260410141916",
+      "package": "com.ahmadkamal.slipin",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0A0A0F",
         "foregroundImage": "./assets/images/android-icon-foreground.png"
-      },
-      "permissions": [
-        "android.permission.POST_NOTIFICATIONS",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.READ_MEDIA_IMAGES",
-        "android.permission.RECORD_AUDIO"
-      ]
-    },
-    "extra": {
-      "eas": {
-        "projectId": "4d7c1c76-329c-47a0-9a47-09489321fe0f"
       }
     },
     "plugins": [
@@ -45,13 +31,6 @@
         "expo-location",
         {
           "locationWhenInUsePermission": "Allow SlipIn to use your location."
-        }
-      ],
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Allow SlipIn to access your photos.",
-          "cameraPermission": "Allow SlipIn to use your camera."
         }
       ]
     ]
