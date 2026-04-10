@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "SlipIn",
+    "slug": "slipin",
+    "version": "1.0.0",
+    "owner": "ahmad-kamal",
+    "extra": {
+      "eas": {
+        "projectId": "9c17bf4f-8364-4169-9381-02820a5eb388"
+      }
+    },
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "manus20260410141916",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "space.manus.slipin.t20260410141916"
+    },
+    "android": {
+      "package": "space.manus.slipin.t20260410141916",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0F",
+        "foregroundImage": "./assets/images/android-icon-foreground.png"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      ["expo-location", { "locationWhenInUsePermission": "Allow SlipIn to use your location." }]
+    ]
+  }
+}
