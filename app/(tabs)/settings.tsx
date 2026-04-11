@@ -171,7 +171,7 @@ export default function SettingsScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>SlipIn · Maybe Meet Now</Text>
-          <Text style={styles.footerSub}>Made with Love by OSA</Text>
+          <Text style={styles.footerSub}>Proof of Concept v1.0</Text>
         </View>
       </ScrollView>
     </ScreenContainer>
@@ -185,31 +185,26 @@ function capitalize(s: string) {
 const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 18,
+    paddingTop: 8,
+    paddingBottom: 16,
   },
-  headerTitle: { fontSize: 30, fontWeight: "800", color: COLORS.foreground, letterSpacing: -0.5 },
+  headerTitle: { fontSize: 28, fontWeight: "700", color: COLORS.foreground },
   profileCard: {
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: 16,
     marginBottom: 24,
-    padding: 18,
+    padding: 16,
     backgroundColor: COLORS.surface,
-    borderRadius: 20,
+    borderRadius: 16,
     borderWidth: 1,
-    borderColor: `${COLORS.primary}30`,
-    shadowColor: COLORS.primary,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    elevation: 4,
+    borderColor: COLORS.border,
   },
   profileInfo: { flex: 1, marginLeft: 14 },
-  profileName: { fontSize: 18, fontWeight: "700", color: COLORS.foreground, letterSpacing: -0.2 },
-  profileEmail: { fontSize: 13, color: COLORS.muted, marginTop: 3, lineHeight: 18 },
-  profileTags: { fontSize: 12, color: COLORS.primary, marginTop: 5, fontWeight: "500" },
-  editText: { fontSize: 14, color: COLORS.primary, fontWeight: "600", letterSpacing: 0.2 },
+  profileName: { fontSize: 18, fontWeight: "700", color: COLORS.foreground },
+  profileEmail: { fontSize: 13, color: COLORS.muted, marginTop: 2 },
+  profileTags: { fontSize: 12, color: COLORS.primary, marginTop: 4 },
+  editText: { fontSize: 14, color: COLORS.primary, fontWeight: "600" },
   section: { paddingHorizontal: 16, marginBottom: 4 },
   settingRow: {
     flexDirection: "row",
@@ -233,7 +228,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoutText: { color: COLORS.error, fontSize: 16, fontWeight: "600" },
-  footer: { alignItems: "center", paddingVertical: 32 },
-  footerText: { fontSize: 13, color: COLORS.muted, fontWeight: "500", letterSpacing: 0.3 },
-  footerSub: { fontSize: 12, color: COLORS.primary, marginTop: 6, fontWeight: "500", opacity: 0.8 },
+  footer: { alignItems: "center", paddingVertical: 24 },
+  footerText: { fontSize: 13, color: COLORS.muted },
+  footerSub: { fontSize: 11, color: COLORS.border, marginTop: 4 },
 });

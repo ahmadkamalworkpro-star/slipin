@@ -2,15 +2,29 @@
 import "./scripts/load-env.js";
 import type { ExpoConfig } from "expo/config";
 
-// Bundle ID format: com.ahmadkamal.slipin
-const bundleId = "com.ahmadkamal.slipin";
-const scheme = "slipin-app";
+// Bundle ID format: space.manus.<project_name_dots>.<timestamp>
+const rawBundleId = "space.manus.slipin.t20260410141916";
+const bundleId =
+  rawBundleId
+    .replace(/[-_]/g, ".")
+    .replace(/[^a-zA-Z0-9.]/g, "")
+    .replace(/\.+/g, ".")
+    .replace(/^\.+|\.+$/g, "")
+    .toLowerCase()
+    .split(".")
+    .map((segment) => {
+      return /^[a-zA-Z]/.test(segment) ? segment : "x" + segment;
+    })
+    .join(".") || "space.manus.app";
+
+const timestamp = bundleId.split(".").pop()?.replace(/^t/, "") ?? "";
+const schemeFromBundleId = `manus${timestamp}`;
 
 const env = {
   appName: "SlipIn",
   appSlug: "slipin",
   logoUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663295506312/VrzLjexObOjvOoBp.png",
-  scheme: scheme,
+  scheme: schemeFromBundleId,
   iosBundleId: bundleId,
   androidPackage: bundleId,
 };
@@ -19,18 +33,11 @@ const config: ExpoConfig = {
   name: env.appName,
   slug: env.appSlug,
   version: "1.0.0",
-  owner: "ahmad-kamal",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: env.scheme,
   userInterfaceStyle: "dark",
-  // Global flag to disable new architecture
-  newArchEnabled: false, 
-  extra: {
-    eas: {
-      projectId: "f6aeaf30-396b-4714-ac88-14c6ca193313"
-    }
-  },
+  newArchEnabled: true,
   ios: {
     supportsTablet: true,
     bundleIdentifier: env.iosBundleId,
@@ -116,13 +123,8 @@ const config: ExpoConfig = {
       "expo-build-properties",
       {
         android: {
-          // Forcefully disabling New Arch for libraries like Reanimated/Worklets
-          newArchEnabled: false, 
           buildArchs: ["armeabi-v7a", "arm64-v8a"],
         },
-        ios: {
-          newArchEnabled: false
-        }
       },
     ],
   ],

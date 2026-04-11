@@ -641,7 +641,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 16,
   },
-  topLogo: { width: 40, height: 40 },
+  topLogo: { width: 60, height: 30 },
   topBarRight: { flexDirection: "row", alignItems: "center", gap: 12 },
   darkToggle: {
     paddingHorizontal: 12,

@@ -1,15 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { View, Text, StyleSheet, Image, Animated } from "react-native";
+import { View, Text, StyleSheet, Image, Animated, Dimensions } from "react-native";
 import { router } from "expo-router";
 import { COLORS } from "@/components/slipin-ui";
 import { useApp } from "@/lib/app-context";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const { width, height } = Dimensions.get("window");
 
 export default function SplashScreen() {
   const { isAuthenticated, currentUser } = useApp();
   const logoOpacity = useRef(new Animated.Value(0)).current;
   const logoScale = useRef(new Animated.Value(0.7)).current;
   const taglineOpacity = useRef(new Animated.Value(0)).current;
+  const glowAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.sequence([
@@ -18,30 +20,25 @@ export default function SplashScreen() {
         Animated.spring(logoScale, { toValue: 1, friction: 6, useNativeDriver: true }),
       ]),
       Animated.timing(taglineOpacity, { toValue: 1, duration: 600, useNativeDriver: true }),
+      Animated.timing(glowAnim, { toValue: 1, duration: 400, useNativeDriver: true }),
     ]).start();
 
-    const timer = setTimeout(async () => {
+    const timer = setTimeout(() => {
       if (isAuthenticated && currentUser?.name) {
         router.replace("/(tabs)");
       } else if (isAuthenticated) {
         router.replace("/profile-setup");
       } else {
-        // Check if user has seen onboarding before
-        const onboarded = await AsyncStorage.getItem("slipin_onboarded");
-        if (onboarded) {
-          router.replace("/login");
-        } else {
-          router.replace("/onboarding");
-        }
+        router.replace("/login");
       }
-    }, 2600);
+    }, 2800);
 
     return () => clearTimeout(timer);
   }, [isAuthenticated, currentUser]);
 
   return (
     <View style={styles.container}>
-      {/* Background glow circles */}
+      {/* Background gradient circles */}
       <View style={[styles.glowCircle, styles.glowCircle1]} />
       <View style={[styles.glowCircle, styles.glowCircle2]} />
 
