@@ -171,7 +171,7 @@ export default function SettingsScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>SlipIn · Maybe Meet Now</Text>
-          <Text style={styles.footerSub}>Proof of Concept v1.0</Text>
+          <Text style={styles.footerSub}>Made with Love by OSA</Text>
         </View>
       </ScrollView>
     </ScreenContainer>
