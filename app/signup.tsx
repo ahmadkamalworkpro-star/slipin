@@ -38,7 +38,7 @@ export default function SignupScreen() {
     try {
       const ok = await signup(email, password);
       if (ok) {
-        router.replace("/profile-setup" as any);
+        router.replace("/onboarding-questions" as any);
       }
     } catch {
       setError("Something went wrong");

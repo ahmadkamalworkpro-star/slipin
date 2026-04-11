@@ -65,3 +65,13 @@
 - [x] Ghost Delay calculation tests
 - [x] Message structure tests
 - [x] Interest tag validation tests
+
+## Onboarding Questions Flow (v1.4)
+- [x] Created onboarding-questions.tsx (3-step screen: What brings you here / Vibe / Appearance)
+- [x] Wired signup.tsx to navigate to onboarding-questions after successful signup
+- [x] Wired onboarding-questions.tsx to navigate to profile-setup after completion
+- [x] Registered onboarding-questions screen in _layout.tsx Stack
+- [x] Answers stored in AsyncStorage (key: slipin_onboarding_answers)
+- [x] No new dependencies added (uses only ScrollView, TouchableOpacity, AsyncStorage)
+- [x] Expo Go bundle verified: 10.6 MB Android bundle builds cleanly with onboarding screen included
+- [x] Recreated index.js entry point (was removed by v1.0 rollback)
