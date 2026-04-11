@@ -75,3 +75,12 @@
 - [x] Production-level visual polish (typography, spacing, shadows, gradients)
 - [x] Onboarding wired into navigation: first-time users → onboarding → signup
 - [x] Returning users skip onboarding and go directly to login
+
+## Bug Fixes (v1.2)
+- [x] Confirmed no unsupported dependencies (react-native-swiper, react-native-pager-view not present)
+- [x] Onboarding slider already uses pure FlatList + Animated (Expo-compatible, no swiper)
+- [x] Fixed Expo preview crash: created index.js entry point at project root
+- [x] Fixed metro.config.js resolver to use context.resolveRequest fallback correctly
+- [x] Android bundle: 1706 modules bundled successfully
+- [x] iOS bundle: 1699 modules bundled successfully
+- [x] All 19 tests pass
