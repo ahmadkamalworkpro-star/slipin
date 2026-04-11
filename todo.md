@@ -65,3 +65,13 @@
 - [x] Ghost Delay calculation tests
 - [x] Message structure tests
 - [x] Interest tag validation tests
+
+## UI Improvements (v1.1)
+- [x] Onboarding intro slider (4 swipeable slides before signup)
+- [x] Remove square background behind logo on Login screen
+- [x] Remove square background behind logo on Signup screen
+- [x] Logo confirmed clean on Splash, Map, Onboarding screens (no box)
+- [x] Update footer text: "Made with Love by OSA"
+- [x] Production-level visual polish (typography, spacing, shadows, gradients)
+- [x] Onboarding wired into navigation: first-time users → onboarding → signup
+- [x] Returning users skip onboarding and go directly to login

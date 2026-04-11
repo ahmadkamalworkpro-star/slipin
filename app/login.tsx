@@ -8,9 +8,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
-  ActivityIndicator,
 } from "react-native";
 import { router } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, NeonButton, DarkInput } from "@/components/slipin-ui";
 import { useApp } from "@/lib/app-context";
 
@@ -47,23 +47,28 @@ export default function LoginScreen() {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        {/* Background glow */}
-        <View style={[styles.glowCircle, styles.glowCircle1]} />
-        <View style={[styles.glowCircle, styles.glowCircle2]} />
+      {/* Ambient background glows */}
+      <View style={[styles.glowCircle, styles.glowCircle1]} />
+      <View style={[styles.glowCircle, styles.glowCircle2]} />
 
-        {/* Logo */}
+      <ScrollView
+        contentContainerStyle={styles.scroll}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Logo — no box, no background */}
         <View style={styles.logoSection}>
           <Image
             source={require("@/assets/images/icon.png")}
             style={styles.logo}
             resizeMode="contain"
           />
+          <Text style={styles.appName}>SlipIn</Text>
           <Text style={styles.tagline}>Maybe Meet Now</Text>
         </View>
 
-        {/* Form */}
-        <View style={styles.form}>
+        {/* Form card */}
+        <View style={styles.formCard}>
           <Text style={styles.title}>Welcome Back</Text>
           <Text style={styles.subtitle}>Sign in to find who's nearby</Text>
 
@@ -111,8 +116,16 @@ export default function LoginScreen() {
             title="Create Account"
             onPress={() => router.push("/signup" as any)}
             variant="outline"
+            color={COLORS.primary}
             style={styles.secondaryBtn}
           />
+
+          <TouchableOpacity
+            style={styles.onboardingLink}
+            onPress={() => router.push("/onboarding" as any)}
+          >
+            <Text style={styles.onboardingText}>New here? See how it works →</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -124,59 +137,71 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.bg,
   },
-  scroll: {
-    flexGrow: 1,
-    paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 40,
-  },
   glowCircle: {
     position: "absolute",
     borderRadius: 999,
-    opacity: 0.07,
   },
   glowCircle1: {
-    width: 350,
-    height: 350,
+    width: 380,
+    height: 380,
     backgroundColor: COLORS.primary,
-    top: -80,
-    right: -80,
+    opacity: 0.055,
+    top: -120,
+    right: -100,
   },
   glowCircle2: {
-    width: 250,
-    height: 250,
+    width: 280,
+    height: 280,
     backgroundColor: COLORS.secondary,
-    bottom: 100,
-    left: -60,
+    opacity: 0.055,
+    bottom: 80,
+    left: -80,
+  },
+  scroll: {
+    flexGrow: 1,
+    paddingHorizontal: 24,
+    paddingTop: 64,
+    paddingBottom: 40,
   },
   logoSection: {
     alignItems: "center",
-    marginBottom: 40,
+    marginBottom: 36,
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 88,
+    height: 88,
+    // No background, no border, no box — raw image only
+  },
+  appName: {
+    marginTop: 12,
+    fontSize: 26,
+    fontWeight: "800",
+    color: COLORS.foreground,
+    letterSpacing: -0.5,
   },
   tagline: {
-    marginTop: 8,
+    marginTop: 4,
     fontSize: 13,
     color: COLORS.muted,
     letterSpacing: 2.5,
     textTransform: "uppercase",
+    fontWeight: "300",
   },
-  form: {
+  formCard: {
     flex: 1,
   },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: "700",
     color: COLORS.foreground,
     marginBottom: 6,
+    letterSpacing: -0.3,
   },
   subtitle: {
     fontSize: 15,
     color: COLORS.muted,
     marginBottom: 28,
+    lineHeight: 22,
   },
   fieldGroup: {
     gap: 12,
@@ -189,13 +214,15 @@ const styles = StyleSheet.create({
     color: COLORS.error,
     fontSize: 14,
     marginBottom: 12,
+    lineHeight: 20,
   },
   primaryBtn: {
-    marginBottom: 16,
+    marginBottom: 14,
   },
   forgotBtn: {
     alignItems: "center",
     marginBottom: 24,
+    paddingVertical: 4,
   },
   forgotText: {
     color: COLORS.muted,
@@ -204,7 +231,7 @@ const styles = StyleSheet.create({
   dividerRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 20,
   },
   dividerLine: {
     flex: 1,
@@ -213,10 +240,19 @@ const styles = StyleSheet.create({
   },
   dividerText: {
     color: COLORS.muted,
-    paddingHorizontal: 12,
+    paddingHorizontal: 14,
     fontSize: 13,
   },
   secondaryBtn: {
     borderColor: COLORS.primary,
+    marginBottom: 20,
+  },
+  onboardingLink: {
+    alignItems: "center",
+    paddingVertical: 4,
+  },
+  onboardingText: {
+    color: COLORS.muted,
+    fontSize: 13,
   },
 });
