@@ -84,3 +84,15 @@
 - [x] Android bundle: 1706 modules bundled successfully
 - [x] iOS bundle: 1699 modules bundled successfully
 - [x] All 19 tests pass
+
+## Web & Vercel Fixes (v1.3)
+- [x] Verified react-native-web (~0.21.2) and react-dom (19.1.0) already installed
+- [x] Fixed index.js entry point (re-exports expo-router/entry for Expo Go + web)
+- [x] Added package.json scripts: web, export:web, vercel-build
+- [x] app.config.ts already has web: { bundler: 'metro', output: 'static' }
+- [x] Web-incompatible code already guarded (Platform.OS !== 'web' for maps/location)
+- [x] expo export --platform web runs cleanly: 20 static routes, 2.5 MB JS bundle → dist/
+- [x] Added vercel.json: buildCommand + outputDirectory + rewrites + cache headers
+- [x] Added .vercelignore to exclude server/node_modules from Vercel
+- [x] expo start --web confirmed working (HTML served at localhost:8081)
+- [x] All 19 tests pass
